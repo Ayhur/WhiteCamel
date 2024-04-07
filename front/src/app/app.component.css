@@ -1,0 +1,33 @@
+#carouselHoteles .carousel-inner img {
+    max-height: 300px; /* Ajusta esto según necesites */
+    max-width: 800px;
+    /* width: auto; */
+    margin: auto; /* Centra las imágenes en su contenedor */
+  }
+  #carouselHoteles .carousel-inner {
+    display: flex;
+    align-items: center; /* Alinea verticalmente las imágenes */
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .container-main-content {
+    min-height: 100%;
+    /* Ajusta el padding-bottom al mismo valor que la altura de tu footer */
+    padding-bottom: 150px; /* Asumiendo que tu footer tenga una altura de 150px */
+  }
+  
+  footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    /* Ajusta la altura según el contenido de tu footer */
+    height: 450px; 
+    background-color: #f5f5f5;
+    text-align: center;
+    padding: 20px 0;
+  }

@@ -39,3 +39,10 @@ build/
 
 ##TESts
 src/main/java/com/uem/whitecamelapi/infraestructure/api/controller/AiController.java
+/.metadata/
+
+
+
+# Ignorar directorios de Angular y node_modules en el directorio front
+front/.angular/
+front/node_modules/
