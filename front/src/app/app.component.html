@@ -1,0 +1,301 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Escaping</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" href="#">Hoteles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Apartamentos</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center">
+        <!-- Dropdown para la moneda -->
+        <div class="dropdown me-2">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            EUR
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#">EUR</a></li>
+            <li><a class="dropdown-item" href="#">USD</a></li>
+          </ul>
+        </div>
+      
+        <!-- Dropdown para el idioma -->
+        <div class="dropdown me-2">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="path_to_spanish_flag" alt="ESP" style="width: 20px;"> ESP
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            <li><a class="dropdown-item" href="#"><img src="path_to_spanish_flag" alt="ESP" style="width: 20px;"> Español</a></li>
+            <li><a class="dropdown-item" href="#"><img src="path_to_english_flag" alt="ENG" style="width: 20px;"> English</a></li>
+          </ul>
+        </div>
+      
+        <!-- Botón de ayuda -->
+        <button class="btn btn-secondary me-2" type="button">
+          ?
+        </button>
+      </div>
+      
+      <!-- Botones de Regístrate y Login -->
+      <div class="d-flex">
+        <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#registerModal" type="button">Regístrate</button>
+        <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#loginModal" type="button">Login</button>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Modal de Login -->
+<!-- <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="usuarioEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="usuarioEmail" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="usuarioPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="usuarioPassword">
+          </div>
+          <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+<!-- Modal de Login -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Iniciar sesión</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Añade el evento (ngSubmit) y #loginForm="ngForm" -->
+        <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
+          <div class="mb-3">
+            <label for="usuarioEmail" class="form-label">Usuario</label>
+            <!-- Añade ngModel y nombre al input de email -->
+            <input type="email" class="form-control" id="username" name="username" ngModel required>
+          </div>
+          <div class="mb-3">
+            <label for="usuarioPassword" class="form-label">Contraseña</label>
+            <!-- Añade ngModel y nombre al input de contraseña -->
+            <input type="password" class="form-control" id="usuarioPassword" name="password" ngModel required>
+          </div>
+          <!-- Añade type="button" para evitar el envío automático del formulario fuera de Angular -->
+          <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Modal de Registro -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="registerModalLabel">Regístrate</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="registroNombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="registroNombre">
+          </div>
+          <div class="mb-3">
+            <label for="registroEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" id="registroEmail">
+          </div>
+          <div class="mb-3">
+            <label for="registroPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="registroPassword">
+          </div>
+          <button type="submit" class="btn btn-primary">Crear cuenta</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid justify-content-center">
+    <a class="navbar-brand d-lg-none" href="#">Escaping</a>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNavDropdown">
+      <ul class="navbar-nav d-lg-none">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Características</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Precios</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Acerca de</a>
+        </li>
+      </ul>
+
+      <app-search (searchResults)="handleSearchResults($event)"></app-search>
+
+      <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+        <button class="btn btn-outline-success" type="submit">Buscar</button>
+      </form> -->
+
+
+
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+
+
+<div class="container mt-8">
+  <div class="row">
+    <div class="col">
+      <h2>Explora nuestros hoteles</h2>
+    </div>
+  </div>
+  <!-- <div id="carouselHotelesEstatico" class="carousel slide" data-bs-ride="carousel"> -->
+  <div>
+    <!-- Wrapper para las tarjetas -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="d-flex justify-content-center">
+          
+          <ng-container *ngFor="let resultado of results">
+            <div class="card">
+              <h2>{{ resultado.nombre }}</h2>
+              <p>Descripción: {{ resultado.direccion || 'No disponible' }}</p>
+              <p>Teléfono: {{ resultado.telefono || 'No disponible' }}</p>
+              <!-- foto: -->
+              <!-- {{resultado | json}} -->
+              <!-- <img *ngIf="resultado.imagen" [src]="'../assets/hotel1.png'" alt="Imagen del hotel"> -->
+              <img *ngIf="resultado.imagen" [src]=resultado.imagen alt="Imagen del hotel">
+            </div>
+
+          </ng-container>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Inicio del Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
+    <!-- Enlace de redes sociales -->
+    <div class="me-5 d-none d-lg-block">
+      <span>Conéctate con nosotros en las redes sociales:</span>
+    </div>
+    <div>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sección de enlaces y contacto -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <div class="row mt-3">
+        <!-- Sección de información de contacto -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Nombre de la Empresa
+          </h6>
+          <p>
+            ESCAPING
+          </p>
+        </div>
+        
+        <!-- Sección de enlaces útiles -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Enlaces Útiles
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Preguntas Frecuentes</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Política de Privacidad</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Términos de Uso</a>
+          </p>
+        </div>
+        
+        <!-- Sección de contacto -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contacto
+          </h6>
+          <p>
+            <i class="fas fa-home me-3"></i> Dirección, 100, Ciudad, País
+          </p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            
+          </p>
+          <p>
+            <i class="fas fa-phone me-3"></i> +34 000000000
+          </p>
+          <p>
+            <i class="fas fa-print me-3"></i> +34 000000000
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Derechos de autor -->
+  <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+    © 2024 Derechos Reservados:
+    <a class="text-reset fw-bold" href="https://www.tusitio.com/">tusitio.com</a>
+  </div>
+</footer>
+<!-- Fin del Footer -->
+
+
+<router-outlet></router-outlet>
