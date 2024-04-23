@@ -17,7 +17,8 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public LoginData getLogginData(LoginData data) {
-		return loginRepository.getLogginByUsernameAndPassword(data.getUsername(), data.getPassword());
+
+		return loginRepository.getLoginByDniAndPassword(data.getDni(), data.getPassword());
 	}
 
 }

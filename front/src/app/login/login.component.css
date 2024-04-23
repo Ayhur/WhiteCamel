@@ -1,0 +1,8 @@
+:host {
+    display: block;
+    height: 100vh;
+    background-image: url('/assets/images/fondo3.webp');
+    background-size: cover;
+    background-position: center;
+  }
+  

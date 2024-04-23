@@ -1,27 +1,41 @@
-// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { LoginData } from '../models/login-data.model';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { LoginService } from './login.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private currentUserSubject: BehaviorSubject<any>;
+  public currentUser: Observable<any>;
 
-// Ejemplo de cómo incluir un token JWT en tus solicitudes
-public httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type':  'application/json',
-      'Authorization': 'Bearer YOUR_TOKEN_HERE'
-    })
-  };
+  constructor(private http: HttpClient) {
+    const currentUser = localStorage.getItem('currentUser');
+    const currentUserParsed = currentUser ? JSON.parse(currentUser) : null;
+    this.currentUserSubject = new BehaviorSubject<any>(currentUserParsed);
+    this.currentUser = this.currentUserSubject.asObservable();
+  }
 
-  private loginUrl = 'http://localhost:8080/login';
+  public get currentUserValue() {
+    return this.currentUserSubject.value;
+  }
 
-  constructor(private http: HttpClient) { }
 
-  login(loginData: LoginData): Observable<LoginData> {
-    return this.http.post<LoginData>(this.loginUrl, loginData);
+  /**
+   * Eliminamos del local storage al usuario para log out.
+   */
+  logout() {
+    localStorage.removeItem('currentUser');
+    this.currentUserSubject.next(null);
+  }
+
+  /**
+   * Validamos si el usuario esta autenticado.
+   * @returns boolean
+   */
+  isAuthenticated(): boolean {
+    return !!this.currentUserValue;
   }
 }
