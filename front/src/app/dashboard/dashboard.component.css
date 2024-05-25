@@ -1,0 +1,27 @@
+:host {
+    display: block;
+    height: 100vh;
+    background-image: url('/assets/images/fondo3.webp');
+    background-size: cover;
+    background-position: center;
+}
+
+.toolbar-filler {
+    flex: 1 1 auto;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    justify-content: center;
+    gap: 1rem;
+    height: 100%;
+    width: 100%;
+}
+
+.scoreboard{
+    background-color: white;
+    border: 0px;
+    border-radius: 1rem;
+}
