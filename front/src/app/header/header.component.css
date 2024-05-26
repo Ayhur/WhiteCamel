@@ -1,0 +1,18 @@
+:host {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logo {
+    height: 100%;
+    max-width: 100%; /* Asegura que el logo no exceda el 5% del ancho total */
+    object-fit: contain; /* Mantiene la proporción del logo */
+  }
+  
+  .user-info {
+    font-size: 16px;
+    color: #fff;
+  }
+  

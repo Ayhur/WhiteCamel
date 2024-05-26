@@ -1,0 +1,18 @@
+<div *ngIf="!loading">
+  <h2>Preguntas y Respuestas para el Temario {{ testId }}</h2>
+  
+  <div *ngFor="let question of questions">
+    <h3>{{ question.questionText }}</h3>
+    <ul>
+      <li *ngFor="let response of question.responses" 
+          [ngClass]="{'correct-answer': isCorrect(question.questionId) && selectedResponses[question.questionId] === response.responseId, 'incorrect-answer': !isCorrect(question.questionId) && selectedResponses[question.questionId] === response.responseId}"
+          (click)="selectResponse(question.questionId, response.responseId)"
+          [class.disabled]="selectedResponses[question.questionId] !== null">
+        {{ response.responseText }}
+      </li>
+    </ul>
+  </div>
+</div>
+<div *ngIf="loading">
+  <p>Cargando preguntas y respuestas...</p>
+</div>

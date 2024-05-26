@@ -11,12 +11,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { GeneralComponent } from './general/general.component';
+import { MenuComponent } from './menu/menu.component';
+import { ContentComponent } from './content/content.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchComponent,
-    LoginComponent
+    LoginComponent,
+    GeneralComponent,
+    MenuComponent,
+    ContentComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

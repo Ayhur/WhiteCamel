@@ -22,6 +22,12 @@ export class AuthService {
     return this.currentUserSubject.value;
   }
 
+  login(user: any) {
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    console.log('currentUser', localStorage.getItem('currentUser'));
+    this.currentUserSubject.next(user);
+  }
+
 
   /**
    * Eliminamos del local storage al usuario para log out.
@@ -36,6 +42,7 @@ export class AuthService {
    * @returns boolean
    */
   isAuthenticated(): boolean {
+    console.log("isAuthenticated")
     return !!this.currentUserValue;
   }
 }

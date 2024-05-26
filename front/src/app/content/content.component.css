@@ -1,0 +1,32 @@
+div {
+  padding: 20px;
+  background-color: #b73b3b;
+}
+.correct-answer {
+  background-color: green;
+  color: white;
+}
+
+.incorrect-answer {
+  background-color: red;
+  color: white;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+li.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+li:hover:not(.disabled) {
+  background-color: #f0f0f0;
+}

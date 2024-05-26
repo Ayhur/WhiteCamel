@@ -1,4 +1,3 @@
-// src/app/services/auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { LoginData } from '../models/login-data.model';
@@ -38,7 +37,7 @@ export class LoginService {
      * @param loginData 
      * @returns userData
      */
-    login(loginData: LoginData): Observable<LoginData> {
+    login(loginData: LoginData): Observable<any> {
         return this.http.post<LoginData>(this.loginUrl, loginData)
             .pipe(map(user => {
                 // almacenar detalles del usuario y token jwt en local storage para mantener al usuario logueado

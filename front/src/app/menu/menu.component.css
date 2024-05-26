@@ -1,0 +1,18 @@
+.menu-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu-item {
+  border: 1px solid #ccc; /* Borde alrededor de cada elemento */
+  padding: 10px; /* Espacio interno dentro de cada elemento */
+  margin-bottom: 10px; /* Espacio entre los elementos */
+  border-radius: 5px; /* Esquinas redondeadas */
+  background-color: #f9f9f9; /* Color de fondo */
+  transition: background-color 0.3s ease; /* Transición para el hover */
+}
+
+.menu-item:hover {
+  background-color: #e0e0e0; /* Color de fondo al pasar el cursor */
+}

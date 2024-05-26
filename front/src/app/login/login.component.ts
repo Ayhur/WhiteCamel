@@ -3,6 +3,7 @@ import { AuthService } from '../servicios/auth.service';
 import { NgForm } from '@angular/forms';
 import { LoginData } from '../models/login-data.model';
 import { LoginService } from '../servicios/login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +12,8 @@ import { LoginService } from '../servicios/login.service';
 })
 export class LoginComponent {
 
-
-
-
-  constructor(private authService: AuthService, private loginService: LoginService) { }
+  constructor(private authService: AuthService, private loginService: LoginService,
+     private router: Router) { }
 
   onLogin(form: NgForm) {
     if (form.invalid) {
@@ -32,6 +31,8 @@ export class LoginComponent {
     this.loginService.login(loginData).subscribe(
       response => {
         console.log('Login successful', response);
+        this.authService.login(response.nombre);
+        this.router.navigate(['/general'])
       },
       error => {
         console.error('Login failed', error);
