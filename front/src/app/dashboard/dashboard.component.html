@@ -1,14 +1,5 @@
-<mat-toolbar>
-    <span>WhiteCamel</span>
-    <span class="toolbar-filler"></span>
-    <button mat-button [matMenuTriggerFor]="menu">Hola, {{ user }}!</button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="onLogout()">Logout</button>
-    </mat-menu>
-</mat-toolbar>
-
 <div class="dashboard">
-    <div class="scoreboard-container">
+    <div>
         <table mat-table [dataSource]="lastAttempts" class="mat-elevation-z8">
             <ng-container matColumnDef="fecha">
                 <th mat-header-cell *matHeaderCellDef> Fecha </th>
@@ -29,5 +20,5 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-    <button mat-raised-button>Nuevo Intento</button>
+    <button mat-raised-button [routerLink]="['/general/content']">Nuevo Intento</button>
 </div>

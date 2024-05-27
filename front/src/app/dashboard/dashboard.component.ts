@@ -24,7 +24,16 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.scoresService
       .getScores(this.authService.currentUserValue.dni)
-      .subscribe(data => this.lastAttempts = data);
+      .subscribe(data => {
+        this.lastAttempts = data;
+        while (this.lastAttempts.length < 5) {
+          this.lastAttempts.push({
+            fecha: '--/--/--',
+            hora: '--:--',
+            puntuacion: 0,
+          });
+        }
+      })
   }
 
   onLogout() {

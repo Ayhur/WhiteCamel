@@ -30,7 +30,7 @@ export class LoginComponent {
 
     this.authService.login(loginData).subscribe(
       response => {
-        this.router.navigate(['/app']);
+        this.router.navigate(['/general/score']);
       },
       error => {
         console.error('Login failed', error);

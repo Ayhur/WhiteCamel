@@ -1,7 +1,26 @@
-div {
-  padding: 20px;
-  background-color: #b73b3b;
+.content {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+.questions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+.question-container {
+  background-color: white;
+  border: 0px;
+  border-radius: 1rem;
+}
+
 .correct-answer {
   background-color: green;
   color: white;
