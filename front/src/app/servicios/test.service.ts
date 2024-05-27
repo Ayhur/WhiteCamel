@@ -29,20 +29,10 @@ export class TestService {
     constructor(private http: HttpClient) { }
 
     /**
-     * Retorna el listado de los temarios.
-     * @returns 
-     */
-    listMenu(): Observable<any> {
-        const url = this.testUrl + '/menu';
-        return this.http.post<any>(url, EMPTY).pipe();
-    }
-
-    /**
      * Retorna el temario seleccionado por el usuario.
-     * @param temarioId 
      */
-    getTest(testId: number): Observable<Question[]> {
+    getTest(): Observable<Question[]> {
         const url = this.testUrl + '/test';
-        return this.http.post<any>(url, testId).pipe();
+        return this.http.get<any>(url).pipe();
       }
 }

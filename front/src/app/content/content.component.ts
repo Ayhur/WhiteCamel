@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TestService } from '../servicios/test.service';
 import { Question } from '../models/question.model';
-import { Response } from '../models/response.model';
 
 @Component({
   selector: 'app-content',
@@ -12,15 +11,14 @@ import { Response } from '../models/response.model';
 export class ContentComponent {
 
   questions: Question[] = [];
-  testId: number | null = null;
+  testId: number = 0;
   loading: boolean = true;
   selectedResponses: { [key: number]: number | null } = {};
 
   constructor(private route: ActivatedRoute, private testService: TestService) { }
 
   ngOnInit(): void {
-
-    this.testService.preguntasYRespuestas$.subscribe({
+    this.testService.getTest().subscribe({
       next: (data: Question[]) => {
         this.questions = data;
         this.loading = false;
@@ -34,9 +32,13 @@ export class ContentComponent {
 
   }
 
+  moveToQuestion(event: number) {
+    this.testId = event;
+  }
+
   initializeSelectedResponses(): void {
     this.questions.forEach(question => {
-      this.selectedResponses[question.questionId] = null;
+      this.selectedResponses[question.id] = null;
     });
   }
 
@@ -47,8 +49,13 @@ export class ContentComponent {
   }
 
   isCorrect(questionId: number): boolean | undefined {
-    const question = this.questions.find(q => q.questionId === questionId);
-    return question && question.correction && this.selectedResponses[questionId] === question.correction.correctResponseId;
+    const responseId = this.selectedResponses[questionId];
+    if (responseId === null) {
+      return false;
+    }
+
+    const question = this.questions.find(q => q.id === questionId);
+    return question && question.answers && question.answers[responseId].correcta;
   }
 
 }

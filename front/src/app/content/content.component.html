@@ -1,20 +1,16 @@
 <div class="content">
-  <app-menu></app-menu>
+  <app-menu [currentItem]="testId" [itemCount]="questions.length" (notifier)="moveToQuestion($event)"></app-menu>
   <div class="questions">
     <div *ngIf="!loading" class="question-container">
-      <h2>Preguntas y Respuestas para el Temario {{ testId }}</h2>
-
-      <div *ngFor="let question of questions">
-        <h3>{{ question.questionText }}</h3>
+        <h3>{{ questions[testId].descripcion }}</h3>
         <ul>
-          <li *ngFor="let response of question.responses"
-            [ngClass]="{'correct-answer': isCorrect(question.questionId) && selectedResponses[question.questionId] === response.responseId, 'incorrect-answer': !isCorrect(question.questionId) && selectedResponses[question.questionId] === response.responseId}"
-            (click)="selectResponse(question.questionId, response.responseId)"
-            [class.disabled]="selectedResponses[question.questionId] !== null">
-            {{ response.responseText }}
+          <li *ngFor="let answer of questions[testId].answers"
+            [ngClass]="{'correct-answer': isCorrect(questions[testId].id) && selectedResponses[questions[testId].id] === answer.id, 'incorrect-answer': !isCorrect(questions[testId].id) && selectedResponses[questions[testId].id] === answer.id}"
+            (click)="selectResponse(questions[testId].id, answer.id)"
+            [class.disabled]="selectedResponses[questions[testId].id] !== null">
+            {{ answer.descripcion }}
           </li>
         </ul>
-      </div>
     </div>
     <div *ngIf="loading" class="container">
       <p>Cargando preguntas y respuestas...</p>
