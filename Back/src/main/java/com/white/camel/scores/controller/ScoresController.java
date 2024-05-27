@@ -1,4 +1,4 @@
-package com.example.escaping.scores.controller;
+package com.white.camel.scores.controller;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.escaping.scores.ScoreRow;
-import com.example.escaping.scores.service.ScoresService;
+import com.white.camel.scores.ScoreRow;
+import com.white.camel.scores.service.ScoresService;
 
 @RestController
 @RequestMapping("/scores")

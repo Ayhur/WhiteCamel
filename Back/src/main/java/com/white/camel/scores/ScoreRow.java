@@ -1,4 +1,4 @@
-package com.example.escaping.scores;
+package com.white.camel.scores;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

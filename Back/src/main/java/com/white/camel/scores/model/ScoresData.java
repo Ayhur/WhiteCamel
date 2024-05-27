@@ -1,4 +1,4 @@
-package com.example.escaping.scores.model;
+package com.white.camel.scores.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;

@@ -1,4 +1,4 @@
-package com.example.escaping.scores.repository;
+package com.white.camel.scores.repository;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.example.escaping.scores.model.ScoresData;
-import com.example.escaping.scores.ScoreRow;
+import com.white.camel.scores.model.ScoresData;
+import com.white.camel.scores.ScoreRow;
 
 @Repository
 public interface ScoresRepository extends JpaRepository<ScoresData, Long> {

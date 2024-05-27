@@ -1,4 +1,4 @@
-package com.example.escaping.scores.service.impl;
+package com.white.camel.scores.service.impl;
 
 import java.util.List;
 
@@ -6,10 +6,9 @@ import org.springframework.data.domain.Limit;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import com.example.escaping.scores.ScoreRow;
-import com.example.escaping.scores.model.ScoresData;
-import com.example.escaping.scores.repository.ScoresRepository;
-import com.example.escaping.scores.service.ScoresService;
+import com.white.camel.scores.ScoreRow;
+import com.white.camel.scores.repository.ScoresRepository;
+import com.white.camel.scores.service.ScoresService;
 
 @Service
 public class ScoresServiceImpl implements ScoresService {
