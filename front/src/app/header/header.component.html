@@ -4,6 +4,7 @@
   </div>
   <span class="toolbar-filler"></span>
   <mat-menu #menu="matMenu" class="user-info">
+    <button mat-menu-item [routerLink]="['/general/score']">Inicio</button>
     <button mat-menu-item (click)="onLogout()">Logout</button>
   </mat-menu>
   <button mat-button [matMenuTriggerFor]="menu">Bienvenido, {{ nombre }}!</button>
