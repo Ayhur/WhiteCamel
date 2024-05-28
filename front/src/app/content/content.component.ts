@@ -4,6 +4,7 @@ import { ScoresService } from '../servicios/scores.service';
 import { AuthService } from '../servicios/auth.service';
 import { Question } from '../models/question.model';
 import { Response } from '../models/response.model';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-content',
@@ -26,11 +27,34 @@ export class ContentComponent {
     private authService: AuthService,
   ) { }
 
+  shuffle(array: any[]) {
+    let currentIndex = array.length;
+
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+
+      // Pick a remaining element...
+      let randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  }
+
+
   ngOnInit(): void {
-    this.testService.getTest().subscribe({
+    this.testService.getTest().pipe(
+      finalize(() => {
+        this.questions.forEach(question => {
+          this.shuffle(question.responses);
+        })
+        this.loading = false;
+      })
+    ).subscribe({
       next: (data: Question[]) => {
         this.questions = data;
-        this.loading = false;
         this.initializeSelectedResponses();
       },
       error: (error) => {

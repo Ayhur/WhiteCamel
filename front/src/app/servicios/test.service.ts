@@ -12,9 +12,9 @@ export class TestService {
 
     private preguntasYRespuestasSubject = new BehaviorSubject<any[]>([]);
     preguntasYRespuestas$ = this.preguntasYRespuestasSubject.asObservable();
-  
+
     setPreguntasYRespuestas(preguntasYRespuestas: any[]) {
-      this.preguntasYRespuestasSubject.next(preguntasYRespuestas);
+        this.preguntasYRespuestasSubject.next(preguntasYRespuestas);
     }
 
     public httpOptions = {
@@ -23,8 +23,6 @@ export class TestService {
             //'Authorization': 'aqui el token app'
         })
     };
-    
-
 
     constructor(private http: HttpClient) { }
 
@@ -33,6 +31,6 @@ export class TestService {
      */
     getTest(): Observable<Question[]> {
         const url = this.testUrl + '/test';
-        return this.http.get<any>(url).pipe();
-      }
+        return this.http.get<any>(url);
+    }
 }
