@@ -1,7 +1,11 @@
-<div class="logo">
-  <img src="assets/images/logo.webp" alt="White Camel Logo" class="logo">
-</div>
-<div class="user-info">
-  <span>Bienvenido, {{nombre}}</span>
-</div>
-  
+<mat-toolbar>
+  <div class="logo">
+    <img src="assets/images/logo.webp" alt="White Camel Logo" class="logo">
+  </div>
+  <span class="toolbar-filler"></span>
+  <mat-menu #menu="matMenu" class="user-info">
+    <button mat-menu-item [routerLink]="['/general/score']">Inicio</button>
+    <button mat-menu-item (click)="onLogout()">Logout</button>
+  </mat-menu>
+  <button mat-button [matMenuTriggerFor]="menu">Bienvenido, {{ nombre }}!</button>
+</mat-toolbar>

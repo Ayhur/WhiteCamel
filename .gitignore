@@ -33,7 +33,7 @@ build/
 .vscode/
 
 
-### APP CONFIGURATION 
+### APP CONFIGURATION
 .env
 
 
@@ -46,3 +46,4 @@ src/main/java/com/uem/whitecamelapi/infraestructure/api/controller/AiController.
 # Ignorar directorios de Angular y node_modules en el directorio front
 front/.angular/
 front/node_modules/
+front/dist/

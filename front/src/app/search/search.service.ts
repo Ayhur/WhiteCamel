@@ -7,7 +7,7 @@ import { SearchResult } from './search-result.model'; // Asegúrate de que la ru
   providedIn: 'root'
 })
 export class SearchService {
-  private apiUrl = 'http://localhost:8080/api'; // URL del backend
+  private apiUrl = 'http://localhost:8081/api'; // URL del backend
 
   constructor(private http: HttpClient) { }
 

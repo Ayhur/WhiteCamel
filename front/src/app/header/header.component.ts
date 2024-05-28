@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../servicios/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,13 @@ import { AuthService } from '../servicios/auth.service';
 })
 export class HeaderComponent {
 
-  nombre: string | undefined;
+  nombre: string | undefined = this.authService.currentUserValue.nombre;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
-  ngOnInit() {
-    this.authService.currentUser.subscribe(user => {
-      this.nombre = user ? user : '';
-      console.log("ESte es nombre, ", this.nombre, user);
-    });
+  onLogout() {
+    console.log("logging out");
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
-
 }

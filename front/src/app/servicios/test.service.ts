@@ -8,7 +8,7 @@ import { Question } from '../models/question.model';
 })
 export class TestService {
 
-    private testUrl = 'http://localhost:8080/test';
+    private testUrl = 'http://localhost:8081/test';
 
     private preguntasYRespuestasSubject = new BehaviorSubject<any[]>([]);
     preguntasYRespuestas$ = this.preguntasYRespuestasSubject.asObservable();

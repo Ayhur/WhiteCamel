@@ -15,6 +15,10 @@ import { GeneralComponent } from './general/general.component';
 import { MenuComponent } from './menu/menu.component';
 import { ContentComponent } from './content/content.component';
 import { HeaderComponent } from './header/header.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,8 @@ import { HeaderComponent } from './header/header.component';
     GeneralComponent,
     MenuComponent,
     ContentComponent,
-    HeaderComponent
+    HeaderComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,9 +40,10 @@ import { HeaderComponent } from './header/header.component';
     MatInputModule,
     MatCardModule,
     MatFormFieldModule,
-    MatButtonModule
-    
-
+    MatButtonModule,
+    MatToolbarModule,
+    MatMenuModule,
+    MatTableModule,
   ],
   providers: [
     provideAnimationsAsync()
