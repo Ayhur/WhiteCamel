@@ -13,8 +13,10 @@
         </ul>
 
       </div>
+      <app-result *ngIf="testDone" class="question-container" [title]="scoreMessage" [score]="finalScore"></app-result>
       <div class="navigation-container">
         <button mat-button class="navigation-button" *ngIf="testId !== 0" (click)="prevQuestion()">Anterior</button>
+        <button mat-button class="navigation-button" *ngIf="testDone" [routerLink]="['/general/score']">Inicio</button>
         <button mat-button class="navigation-button" *ngIf="testId !== questions.length - 1"
           (click)="nextQuestion()">Siguiente</button>
         <button mat-button class="navigation-button" *ngIf="testId === questions.length - 1 && !testDone"

@@ -16,6 +16,8 @@ export class ContentComponent {
   loading: boolean = true;
   testDone: boolean = false;
   selectedResponses: { [key: number]: number | null } = {};
+  finalScore: number = 0;
+  scoreMessage: string = "";
 
   constructor(private route: ActivatedRoute, private testService: TestService) { }
 
@@ -85,5 +87,18 @@ export class ContentComponent {
 
   finishTest() {
     this.testDone = true;
+    const rightAnswers = this.questions
+      .map(question => this.isCorrect(question.questionId))
+      .filter(value => value)
+      .length
+
+    this.finalScore = rightAnswers / this.questions.length;
+    console.log(this.finalScore);
+
+    if (this.finalScore < 0.9) {
+      this.scoreMessage = "Mejor suerte la próxima";
+    } else {
+      this.scoreMessage = "¡Enhorabuena!";
+    }
   }
 }

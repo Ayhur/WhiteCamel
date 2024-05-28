@@ -20,7 +20,7 @@
   flex-direction: column;
   justify-content: center;
   place-items: center;
-  gap: 0.25rem;
+  gap: 2rem;
 }
 
 .question-container {
