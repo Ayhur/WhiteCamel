@@ -13,4 +13,12 @@ export class ScoresService {
   getScores(dni: string) {
     return this.http.get<Score[]>(`http://localhost:8081/scores/${dni}`);
   }
+
+  saveScore(dni: string, puntuacion: number) {
+    console.log("Enviando resultados")
+    return this.http.post<{ dni: string, puntuacion: number }>("http://localhost:8081/scores", {
+      dni: dni,
+      puntuacion: puntuacion,
+    }).subscribe();
+  }
 }

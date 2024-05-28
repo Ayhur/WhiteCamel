@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { TestService } from '../servicios/test.service';
+import { ScoresService } from '../servicios/scores.service';
+import { AuthService } from '../servicios/auth.service';
 import { Question } from '../models/question.model';
 import { Response } from '../models/response.model';
 
@@ -19,7 +20,11 @@ export class ContentComponent {
   finalScore: number = 0;
   scoreMessage: string = "";
 
-  constructor(private route: ActivatedRoute, private testService: TestService) { }
+  constructor(
+    private testService: TestService,
+    private scoresService: ScoresService,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
     this.testService.getTest().subscribe({
@@ -92,10 +97,12 @@ export class ContentComponent {
       .filter(value => value)
       .length
 
-    this.finalScore = rightAnswers / this.questions.length;
+    this.finalScore = (rightAnswers / this.questions.length) * 100;
     console.log(this.finalScore);
 
-    if (this.finalScore < 0.9) {
+    this.scoresService.saveScore(this.authService.currentUserValue.dni, this.finalScore)
+
+    if (this.finalScore < 90) {
       this.scoreMessage = "Mejor suerte la próxima";
     } else {
       this.scoreMessage = "¡Enhorabuena!";

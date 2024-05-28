@@ -34,5 +34,21 @@ public class ScoresData {
 	private LocalTime hora;
 
 	@Column(name = "puntuacion")
-	private Float puntuacion;
+	private Double puntuacion;
+
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
+
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
+	}
+
+	public void setHora(LocalTime hora) {
+		this.hora = hora;
+	}
+
+	public void setPuntuacion(Double puntuacion) {
+		this.puntuacion = puntuacion;
+	}
 }
