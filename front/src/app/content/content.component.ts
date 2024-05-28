@@ -14,6 +14,7 @@ export class ContentComponent {
   questions: Question[] = [];
   testId: number = 0;
   loading: boolean = true;
+  testDone: boolean = false;
   selectedResponses: { [key: number]: number | null } = {};
 
   constructor(private route: ActivatedRoute, private testService: TestService) { }
@@ -40,9 +41,7 @@ export class ContentComponent {
   }
 
   selectResponse(questionId: number, responseId: number): void {
-    if (this.selectedResponses[questionId] === null) {
-      this.selectedResponses[questionId] = responseId;
-    }
+    this.selectedResponses[questionId] = responseId;
   }
 
   isCorrect(questionId: number): boolean | undefined {
@@ -57,6 +56,10 @@ export class ContentComponent {
       return "";
     }
 
+    if (!this.testDone) {
+      return "selected-answer";
+    }
+
     if (this.isCorrect(question.questionId)) {
       return "correct-answer";
     }
@@ -66,5 +69,21 @@ export class ContentComponent {
 
   moveToQuestion(event: number) {
     this.testId = event;
+  }
+
+  prevQuestion() {
+    if (this.testId > 0) {
+      this.testId--;
+    }
+  }
+
+  nextQuestion() {
+    if (this.testId < this.questions.length - 1) {
+      this.testId++;
+    }
+  }
+
+  finishTest() {
+    this.testDone = true;
   }
 }
