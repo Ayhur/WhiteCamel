@@ -18,6 +18,8 @@ export class ContentComponent {
   loading: boolean = true;
   testDone: boolean = false;
   selectedResponses: { [key: number]: number | null } = {};
+
+  ratedQuestions: boolean[] | null = null;
   finalScore: number = 0;
   scoreMessage: string = "";
 
@@ -116,8 +118,22 @@ export class ContentComponent {
 
   finishTest() {
     this.testDone = true;
-    const rightAnswers = this.questions
-      .map(question => this.isCorrect(question.questionId))
+    this.ratedQuestions = this.questions.map(
+      question => {
+        const res = this.isCorrect(question.questionId);
+        if (res === undefined) {
+          return false;
+        }
+        return res;
+      }
+    );
+
+    if (this.ratedQuestions === null) {
+      console.error("Failed to map questions");
+      return;
+    }
+
+    const rightAnswers = this.ratedQuestions
       .filter(value => value)
       .length
 

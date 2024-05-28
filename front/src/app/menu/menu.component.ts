@@ -12,8 +12,28 @@ export class MenuComponent {
 
   @Input() itemCount: number = 0;
 
+  @Input() ratedQuestions: boolean[] | null = null;
+
   @Output() notifier = new EventEmitter<number>()
 
   constructor(private testService:TestService) { }
-  
+
+  setClass(index: number) {
+    let color = "";
+    if (this.ratedQuestions === null) {
+      if (index == this.currentItem) {
+        color = "menu-item-current-color";
+      } else {
+        color = "menu-item-color";
+      }
+    } else {
+      if (this.ratedQuestions[index]) {
+        color = "menu-item-correct-color";
+      } else {
+        color = "menu-item-incorrect-color";
+      }
+    }
+
+    return `menu-item ${color}`;
+  }
 }
