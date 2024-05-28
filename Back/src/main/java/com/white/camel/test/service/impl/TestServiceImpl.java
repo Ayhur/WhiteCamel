@@ -12,19 +12,20 @@ import com.white.camel.test.service.TestService;
 
 @Service
 public class TestServiceImpl implements TestService {
-	
+
 	private TestRepository testRepository;
-	
-	private TestRepositoryCustom testRepositoryCustom; 
-	
+
+	private TestRepositoryCustom testRepositoryCustom;
+
 	public TestServiceImpl(TestRepository testRepository, TestRepositoryCustom testRepositoryCustom) {
 		this.testRepository = testRepository;
 		this.testRepositoryCustom = testRepositoryCustom;
 	}
-	
+
 	/**
 	 * Devuelve todos los nombres de los test existentes para cargar
 	 * las opciones del menu.
+	 * 
 	 * @return
 	 */
 	@Override
@@ -33,8 +34,8 @@ public class TestServiceImpl implements TestService {
 	}
 
 	@Override
-	public List<QuestionDTO> getTest(Integer idTest) {
-		return testRepositoryCustom.findTestDetailsByTestId(idTest);
+	public List<QuestionDTO> getTest() {
+		return testRepositoryCustom.findTestDetailsByTestId();
 	}
 
 }

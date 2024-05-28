@@ -30,7 +30,7 @@ public class TestController {
 
 	@PostMapping("/test")
 	public ResponseEntity<List<QuestionDTO>> getTest(@RequestBody Integer idTest) {
-		List<QuestionDTO> response = testService.getTest(idTest);
+		List<QuestionDTO> response = testService.getTest();
 		return ResponseEntity.ok(response);
 	}
 

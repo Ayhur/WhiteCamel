@@ -21,28 +21,6 @@ SET time_zone = "+00:00";
 -- Base de datos: `whitecamel`
 --
 
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `wh_test`
---
-
-CREATE TABLE `wh_test` (
-  `wh_test_id` int(11) NOT NULL COMMENT 'id autoincremental',
-  `wh_test_titulo` varchar(155) NOT NULL COMMENT 'Titulo del test a realizar'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `wh_test`
---
-
-INSERT INTO `wh_test` (`wh_test_id`, `wh_test_titulo`) VALUES
-(1, 'Conocimientos Básicos de Conducción'),
-(2, 'Normas de Circulación'),
-(3, 'Señalización y Seguridad Vial');
-
--- --------------------------------------------------------
-
 --
 -- Estructura de tabla para la tabla `wh_test_correcciones`
 --
@@ -137,12 +115,6 @@ INSERT INTO `wh_user` (`wh_id`, `wh_nombre`, `wh_apellido1`, `wh_apellido2`, `wh
 --
 
 --
--- Indices de la tabla `wh_test`
---
-ALTER TABLE `wh_test`
-  ADD PRIMARY KEY (`wh_test_id`);
-
---
 -- Indices de la tabla `wh_test_correcciones`
 --
 ALTER TABLE `wh_test_correcciones`
@@ -172,12 +144,6 @@ ALTER TABLE `wh_user`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
-
---
--- AUTO_INCREMENT de la tabla `wh_test`
---
-ALTER TABLE `wh_test`
-  MODIFY `wh_test_id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id autoincremental', AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `wh_test_correcciones`
