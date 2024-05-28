@@ -1,7 +1,9 @@
-import { Answer } from "./response.model";
+import { Correction } from "./correction.model";
+import { Response } from "./response.model";
 
 export interface Question {
-  id: number;
-  descripcion: string;
-  answers: Answer[];
+  questionId: number;
+  questionText: string;
+  responses: Response[];
+  correction: Correction;
 }

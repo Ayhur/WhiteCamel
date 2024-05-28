@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TestService } from '../servicios/test.service';
 import { Question } from '../models/question.model';
+import { Response } from '../models/response.model';
 
 @Component({
   selector: 'app-content',
@@ -23,22 +24,18 @@ export class ContentComponent {
         this.questions = data;
         this.loading = false;
         this.initializeSelectedResponses();
-    },
-    error: (error) => {
-      console.error('Error al obtener preguntas y respuestas:', error);
-      this.loading = false;
-    }
-   });
+      },
+      error: (error) => {
+        console.error('Error al obtener preguntas y respuestas:', error);
+        this.loading = false;
+      }
+    });
 
-  }
-
-  moveToQuestion(event: number) {
-    this.testId = event;
   }
 
   initializeSelectedResponses(): void {
     this.questions.forEach(question => {
-      this.selectedResponses[question.id] = null;
+      this.selectedResponses[question.questionId] = null;
     });
   }
 
@@ -49,13 +46,25 @@ export class ContentComponent {
   }
 
   isCorrect(questionId: number): boolean | undefined {
-    const responseId = this.selectedResponses[questionId];
-    if (responseId === null) {
-      return false;
-    }
-
-    const question = this.questions.find(q => q.id === questionId);
-    return question && question.answers && question.answers[responseId].correcta;
+    const question = this.questions.find(q => q.questionId === questionId);
+    return question && question.correction && this.selectedResponses[questionId] === question.correction.correctResponseId;
   }
 
+  getAnswerStyle(response: Response) {
+    const question = this.questions[this.testId];
+    const selectedResponse = this.selectedResponses[question.questionId];
+    if (selectedResponse === null || selectedResponse !== response.responseId) {
+      return "";
+    }
+
+    if (this.isCorrect(question.questionId)) {
+      return "correct-answer";
+    }
+
+    return "incorrect-answer";
+  }
+
+  moveToQuestion(event: number) {
+    this.testId = event;
+  }
 }

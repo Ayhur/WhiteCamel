@@ -2,15 +2,16 @@
   <app-menu [currentItem]="testId" [itemCount]="questions.length" (notifier)="moveToQuestion($event)"></app-menu>
   <div class="questions">
     <div *ngIf="!loading" class="question-container">
-        <h3>{{ questions[testId].descripcion }}</h3>
-        <ul>
-          <li *ngFor="let answer of questions[testId].answers"
-            [ngClass]="{'correct-answer': isCorrect(questions[testId].id) && selectedResponses[questions[testId].id] === answer.id, 'incorrect-answer': !isCorrect(questions[testId].id) && selectedResponses[questions[testId].id] === answer.id}"
-            (click)="selectResponse(questions[testId].id, answer.id)"
-            [class.disabled]="selectedResponses[questions[testId].id] !== null">
-            {{ answer.descripcion }}
-          </li>
-        </ul>
+      <h3>{{ questions[testId].questionText }}</h3>
+      <ul>
+        <li *ngFor="let response of questions[testId].responses"
+          [ngClass]="getAnswerStyle(response)"
+          (click)="selectResponse(questions[testId].questionId, response.responseId)"
+          [class.disabled]="selectedResponses[questions[testId].questionId] !== null">
+          {{ response.responseText }}
+        </li>
+
+      </ul>
     </div>
     <div *ngIf="loading" class="container">
       <p>Cargando preguntas y respuestas...</p>

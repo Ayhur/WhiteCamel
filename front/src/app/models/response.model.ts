@@ -1,5 +1,4 @@
-export interface Answer {
-  id: number;
-  descripcion: string;
-  correcta: boolean;
+export interface Response {
+  responseId: number;
+  responseText: string;
 }

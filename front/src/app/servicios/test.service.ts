@@ -33,6 +33,6 @@ export class TestService {
      */
     getTest(): Observable<Question[]> {
         const url = this.testUrl + '/test';
-        return this.http.get<any>(url).pipe();
+        return this.http.post<any>(url, 1).pipe();
       }
 }

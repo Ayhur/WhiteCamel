@@ -15,25 +15,23 @@ import com.white.camel.test.service.TestService;
 @RestController
 @RequestMapping("/test")
 public class TestController {
-	
+
 	private TestService testService;
-	
+
 	public TestController(TestService testService) {
 		this.testService = testService;
 	}
-	
+
 	@PostMapping("/menu")
 	public ResponseEntity<List<MenuData>> login() {
 		List<MenuData> response = testService.getMenuList();
 		return ResponseEntity.ok(response);
 	}
-	
+
 	@PostMapping("/test")
 	public ResponseEntity<List<QuestionDTO>> getTest(@RequestBody Integer idTest) {
 		List<QuestionDTO> response = testService.getTest(idTest);
 		return ResponseEntity.ok(response);
 	}
-	
-	
 
 }
