@@ -1,7 +1,9 @@
 <div class="menu">
   <ul class="menu-list">
-    <li *ngFor="let item of listMenu" class="menu-item" (click)="onTemarioClick(item.id)">
-      {{ item.titulo }}
+    <li *ngFor="let i of [].constructor(itemCount); let index = index" [ngClass]="setClass(index)"
+      (click)="notifier.emit(index)">
+      Pregunta {{ index + 1 }}
     </li>
   </ul>
 </div>
+

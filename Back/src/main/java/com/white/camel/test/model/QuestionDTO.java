@@ -11,13 +11,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class QuestionDTO {
-	
+
 	private Long questionId;
-	
-    private String questionText;
-    
-    private List<ResponseDTO> responses;
-    
-    private CorrectionDTO correction;
+
+	private String questionText;
+
+	private List<ResponseDTO> responses;
+
+	private CorrectionDTO correction;
 
 }

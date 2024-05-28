@@ -34,5 +34,5 @@ public class ScoresData {
 	private LocalTime hora;
 
 	@Column(name = "puntuacion")
-	private Float puntuacion;
+	private Double puntuacion;
 }

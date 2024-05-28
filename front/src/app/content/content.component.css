@@ -11,14 +11,48 @@
   flex-direction: column;
   justify-content: center;
   place-items: center;
-  height: 100vh;
-  width: 100vw;
+  height: 95vh;
+  width: 80vw;
+}
+
+.question{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
+  gap: 2rem;
 }
 
 .question-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  place-items: center;
   background-color: white;
   border: 0px;
   border-radius: 1rem;
+  min-width: 40vw;
+  min-height: 25vh;
+}
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.navigation-container {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
+}
+.navigation-button {
+  background-color: #89c9f5;
+  max-width: 100px;
+}
+
+.selected-answer {
+  background-color: #89c9f5;
 }
 
 .correct-answer {

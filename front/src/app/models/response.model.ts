@@ -1,5 +1,4 @@
 export interface Response {
-    responseId: number;
-    responseText: string;
-  }
-  
+  responseId: number;
+  responseText: string;
+}

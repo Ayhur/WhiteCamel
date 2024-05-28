@@ -1,6 +1,5 @@
-import { Correction } from "./correciton.model";
+import { Correction } from "./correction.model";
 import { Response } from "./response.model";
-
 
 export interface Question {
   questionId: number;

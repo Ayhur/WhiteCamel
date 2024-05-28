@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TestService } from '../servicios/test.service';
 
 @Component({
@@ -8,29 +8,32 @@ import { TestService } from '../servicios/test.service';
 })
 export class MenuComponent {
 
-  listMenu: any[] = [];
+  @Input() currentItem: number = 0;
+
+  @Input() itemCount: number = 0;
+
+  @Input() ratedQuestions: boolean[] | null = null;
+
+  @Output() notifier = new EventEmitter<number>()
 
   constructor(private testService:TestService) { }
 
-  ngOnInit() {
-    this.testService.listMenu().subscribe({
-      next: ((response:any) => 
-        this.listMenu = response
-      )
-    });
-  }
+  setClass(index: number) {
+    let color = "";
+    if (this.ratedQuestions === null) {
+      if (index == this.currentItem) {
+        color = "menu-item-current-color";
+      } else {
+        color = "menu-item-color";
+      }
+    } else {
+      if (this.ratedQuestions[index]) {
+        color = "menu-item-correct-color";
+      } else {
+        color = "menu-item-incorrect-color";
+      }
+    }
 
-  /**
-   * Trae el test seleccionado.
-   * @param testId 
-   */
-  onTemarioClick(testId: number): void {
-    this.testService.getTest(testId).subscribe({
-      next: ((response:any) => {
-        console.log("EL listado de preguntas/Respuestas:", response); 
-        this.testService.setPreguntasYRespuestas(response);
-      })
-    });
+    return `menu-item ${color}`;
   }
-  
 }

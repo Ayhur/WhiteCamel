@@ -1,19 +1,27 @@
 <div class="content">
-  <app-menu></app-menu>
+  <app-menu [currentItem]="testId" [itemCount]="questions.length" [ratedQuestions]="ratedQuestions"
+    (notifier)="moveToQuestion($event)"></app-menu>
   <div class="questions">
-    <div *ngIf="!loading" class="question-container">
-      <h2>Preguntas y Respuestas para el Temario {{ testId }}</h2>
+    <div *ngIf="!loading" class="question">
+      <div class="question-container">
+        <h3>{{ questions[testId].questionText }}</h3>
 
-      <div *ngFor="let question of questions">
-        <h3>{{ question.questionText }}</h3>
         <ul>
-          <li *ngFor="let response of question.responses"
-            [ngClass]="{'correct-answer': isCorrect(question.questionId) && selectedResponses[question.questionId] === response.responseId, 'incorrect-answer': !isCorrect(question.questionId) && selectedResponses[question.questionId] === response.responseId}"
-            (click)="selectResponse(question.questionId, response.responseId)"
-            [class.disabled]="selectedResponses[question.questionId] !== null">
+          <li *ngFor="let response of questions[testId].responses" [ngClass]="getAnswerStyle(response)"
+            (click)="selectResponse(questions[testId].questionId, response.responseId)" [class.disabled]="testDone">
             {{ response.responseText }}
           </li>
         </ul>
+
+      </div>
+      <app-result *ngIf="testDone" class="question-container" [title]="scoreMessage" [score]="finalScore"></app-result>
+      <div class="navigation-container">
+        <button mat-button class="navigation-button" *ngIf="testId !== 0" (click)="prevQuestion()">Anterior</button>
+        <button mat-button class="navigation-button" *ngIf="testDone" [routerLink]="['/general/score']">Inicio</button>
+        <button mat-button class="navigation-button" *ngIf="testId !== questions.length - 1"
+          (click)="nextQuestion()">Siguiente</button>
+        <button mat-button class="navigation-button" *ngIf="testId === questions.length - 1 && !testDone"
+          (click)="finishTest()">Terminar</button>
       </div>
     </div>
     <div *ngIf="loading" class="container">

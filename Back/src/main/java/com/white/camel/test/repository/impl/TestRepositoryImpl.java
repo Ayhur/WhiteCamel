@@ -20,14 +20,13 @@ public class TestRepositoryImpl implements TestRepositoryCustom {
 
 	@SuppressWarnings("deprecation")
 	@Override
-	public List<QuestionDTO> findTestDetailsByTestId(Integer idTest) {
-		String sql = "SELECT t.wh_test_id, t.wh_test_titulo, p.wh_test_pre_id, p.wh_test_pre_descripcion, r.wh_test_res_id, r.wh_test_res_descripcion, c.wh_test_correcciones_res AS correct_res_id "
-				+ "FROM wh_test t " + "JOIN wh_test_preguntas p ON t.wh_test_id = p.wh_test_pre_test "
+	public List<QuestionDTO> findTestDetailsByTestId() {
+		String sql = "SELECT p.wh_test_pre_id, p.wh_test_pre_descripcion, r.wh_test_res_id, r.wh_test_res_descripcion, c.wh_test_correcciones_res AS correct_res_id "
+				+ "FROM wh_test_preguntas p "
 				+ "JOIN wh_test_respuestas r ON p.wh_test_pre_id = r.wh_test_res_pre "
-				+ "LEFT JOIN wh_test_correcciones c ON p.wh_test_pre_id = c.wh_test_correcciones_pre AND r.wh_test_res_id = c.wh_test_correcciones_res "
-				+ "WHERE t.wh_test_id = ?";
+				+ "LEFT JOIN wh_test_correcciones c ON p.wh_test_pre_id = c.wh_test_correcciones_pre AND r.wh_test_res_id = c.wh_test_correcciones_res ";
 
-		return jdbcTemplate.query(sql, new Object[] { idTest }, rs -> {
+		return jdbcTemplate.query(sql, rs -> {
 			Map<Long, QuestionDTO> questionMap = new HashMap<>();
 
 			while (rs.next()) {
