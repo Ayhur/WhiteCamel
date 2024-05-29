@@ -30,25 +30,4 @@ public class LoginController {
         }
 	}
 	
-//	el loginOld contenia un responseEntity<Map<String, Object>> para crear subniveles (nested) e introducir estructura
-//	-content (contenido[data]), errorMessage(listadoDeErrores), {opcionalSegunPoint}Paginado
-//	@PostMapping("/login")
-//	public ResponseEntity<LoginData> loginOld(@RequestBody LoginData loginData) {
-//		
-////		String respuesta = "";
-//		LoginData response = new LoginData();
-//		
-////		Map<String, Object> response = new HashMap<>();
-//		
-//		if (loginData != null) {
-//			response = loginService.getLogginData(loginData);
-//			
-////			respuesta = "Login exitoso";
-//		} else {
-//			return (ResponseEntity<LoginData>) ResponseEntity.badRequest();
-//		}
-//		
-////		response.put("message", respuesta);
-//		return ResponseEntity.ok(response);
-//	}
 }
