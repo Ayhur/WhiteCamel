@@ -17,6 +17,10 @@ public class TestServiceImpl implements TestService {
 
 	private TestRepositoryCustom testRepositoryCustom;
 
+	/** Constructor
+	 * @param testRepository
+	 * @param testRepositoryCustom
+	 */
 	public TestServiceImpl(TestRepository testRepository, TestRepositoryCustom testRepositoryCustom) {
 		this.testRepository = testRepository;
 		this.testRepositoryCustom = testRepositoryCustom;
@@ -32,7 +36,7 @@ public class TestServiceImpl implements TestService {
 	public List<MenuData> getMenuList() {
 		return testRepository.findAll();
 	}
-
+	
 	@Override
 	public List<QuestionDTO> getTest() {
 		return testRepositoryCustom.findTestDetailsByTestId();

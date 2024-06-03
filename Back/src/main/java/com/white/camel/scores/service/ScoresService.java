@@ -6,6 +6,8 @@ import com.white.camel.scores.ScoreRow;
 import com.white.camel.scores.model.ScoresData;
 
 public interface ScoresService {
+
 	public List<ScoreRow> getScores(String dni);
+
 	public void saveScore(ScoresData score);
 }

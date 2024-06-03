@@ -19,6 +19,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Table(name = "wh_scores")
 public class ScoresData {
+	
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

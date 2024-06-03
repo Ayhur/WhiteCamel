@@ -14,6 +14,7 @@ import com.white.camel.scores.ScoreRow;
 
 @Repository
 public interface ScoresRepository extends JpaRepository<ScoresData, Long> {
+	
 	@Query("SELECT l.fecha AS fecha, l.hora AS hora, l.puntuacion as puntuacion FROM ScoresData l WHERE l.dni = :dni")
 	List<ScoreRow> getScoresByDni(@Param("dni") String dni, Sort sort, Limit limit);
 }
