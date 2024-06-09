@@ -3,7 +3,7 @@
 
 <!-- TÍTULO Y PRESENTACIÓN -->
 
-# WHITE CAMEL 
+# WHITE CAMEL
 >***Presentación:***
 >White Camel es un proyecto de Edtech que aborda los altos costos y la disminución de la motivación en las autoescuelas tradicionales al ofrecer una plataforma de aprendizaje innovadora, en línea y gamificada. Los usuarios experimentan una aventura diaria, enfrentando desafíos y ganando bonificaciones a través de pruebas. Inspirado en ultramaratones, White Camel introduce un elemento competitivo: si el camello te adelanta, quedas eliminado.
 
@@ -48,7 +48,7 @@
 
 ### Requisitos Previos
 
-- [ ] Instalar un IDE 
+- [ ] Instalar un IDE
 - [ ] Java Development Kit (JDK) 17 o superior instalado en tu sistema.
 - [ ]  Maven instalado en tu sistema para la gestión de dependencias.
 - [ ]  Descargar XAMPP y configurarlo para el acceso
@@ -69,7 +69,7 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
 #### Paso 2: Compilar el Proyecto
 1. Navega al directorio del proyecto clonado:
     ```bash
-    cd WhiteCamel
+    cd WhiteCamel/Back
     ```
 2. Ejecuta el siguiente comando para compilar el proyecto usando Maven:
     ```bash
@@ -87,16 +87,17 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
 #### Paso 4: Ejecutar la Aplicación Frontend
 1. Abre tu IDE (Entorno de Desarrollo Integrado) y por consola haz un:
    ```bash
+    cd front
     npm install
     ```
 2. Tras haber instalado todos los paquetes se hará para correr el servidor:
    ```bash
-    npm run ng dev
+    npm run ng serve
     ```
 2. Tras haber instalado todos los paquetes será posible acceder a la URL:
    ```bash
      http://localhost:4200/
-    ```  
+    ```
 
 #### Paso 5: Acceder a la Aplicación
 - Abre tu navegador web y visita la siguiente URL para acceder a la aplicación:
@@ -121,7 +122,7 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
 
 ## Descripción Técnica
 
-###  Arquitectura 
+###  Arquitectura
 
 Diseñamos nuestra aplicación siguiendo el patrón de **Arquitectura Repository**. Este enfoque organiza el sistema en cuatro capas claramente definidas. La capa de `Controladores` actúa como punto de entrada, gestionando las solicitudes HTTP y dirigiendo el flujo. La capa de `Servicios` contiene la lógica empresarial y se comunica con los controladores y la capa de `Repositorios`. La cual se encarga del acceso a los datos y la comunicación con la base de datos. Finalmente, la capa de `Modelo` representa las entidades del dominio, como la clase `User`, proporcionando un modelo de datos coherente y estructurado para la aplicación.
- 
+
