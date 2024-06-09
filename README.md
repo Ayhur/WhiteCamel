@@ -89,6 +89,10 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
    ```bash
     npm install
     ```
+2. Tras haber instalado todos los paquetes se hará para correr el servidor:
+   ```bash
+    npm run ng dev
+    ```
 2. Tras haber instalado todos los paquetes será posible acceder a la URL:
    ```bash
      http://localhost:4200/
