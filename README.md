@@ -1,11 +1,5 @@
 <div id="top"></div>
 
-<!-- LOGO DEL PROYECTO -->
-<div>
-  <a href="https://github.com/LeslieR0SS/white-camel-api">
-    <img src="/src/main/resources/static/white-camel-alberto-logo-sin-fondo.png" alt="Logo" width="100" height="100" align="right">
-  </a>
-</div>
 
 <!-- TÍTULO Y PRESENTACIÓN -->
 
@@ -57,6 +51,7 @@
 - [ ] Instalar un IDE 
 - [ ] Java Development Kit (JDK) 17 o superior instalado en tu sistema.
 - [ ]  Maven instalado en tu sistema para la gestión de dependencias.
+- [ ]  Descargar XAMPP y configurarlo para el acceso
 
 ---
 
@@ -68,13 +63,13 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
 1. Abre tu terminal o línea de comandos.
 2. Ejecuta el siguiente comando para clonar el repositorio de GitHub:
     ```bash
-    git clone https://github.com/LeslieR0SS/white-camel-api.git
+    git clone https://github.com/Ayhur/WhiteCamel.git
     ```
 
 #### Paso 2: Compilar el Proyecto
 1. Navega al directorio del proyecto clonado:
     ```bash
-    cd white-camel-api
+    cd WhiteCamel
     ```
 2. Ejecuta el siguiente comando para compilar el proyecto usando Maven:
     ```bash
@@ -82,6 +77,7 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
     ```
 
 #### Paso 3: Ejecutar la Aplicación Backend
+- Abre XAMPP e inica el servidor Apache y MySQL con la configuración adecuada.
 - Ejecuta el siguiente comando para iniciar la aplicación backend con Spring Boot:
     ```bash
     mvn spring-boot:run
@@ -89,14 +85,19 @@ _A continuación explicaremos los pasos a seguir para reliazar la instalación y
 - La aplicación se ejecutará en segundo plano y estará lista para recibir solicitudes.
 
 #### Paso 4: Ejecutar la Aplicación Frontend
-1. Abre tu IDE (Entorno de Desarrollo Integrado) y navega al directorio donde se encuentra la vista HTML principal de la aplicación frontend.
-2. Desde tu IDE, abre el archivo HTML principal y ejecútalo utilizando la opción de ejecución de tu IDE.
-3. Esto abrirá una pantalla de navegador en el localhost:5500, donde podrás interactuar con la aplicación frontend.
+1. Abre tu IDE (Entorno de Desarrollo Integrado) y por consola haz un:
+   ```bash
+    npm install
+    ```
+2. Tras haber instalado todos los paquetes será posible acceder a la URL:
+   ```bash
+     http://localhost:4200/
+    ```  
 
 #### Paso 5: Acceder a la Aplicación
 - Abre tu navegador web y visita la siguiente URL para acceder a la aplicación:
     ```
-    http://localhost:5500
+    http://localhost:4200/
     ```
 
 #### Paso 6: ¡Listo para Usar!
